@@ -1,0 +1,57 @@
+# Smoke-test configuration: synthetic data, random weights, CPU, 1 epoch.
+# Exercises every code path in minutes; the numbers it produces are meaningless.
+
+data:
+  primary_root: smoke_data/riceleaf
+  external_root: smoke_data/paddy
+  classes: ["Bacterial leaf blight", "Brown spot", "Health", "Leaf smut"]
+  display_names: ["Bacterial leaf blight", "Brown spot", "Healthy", "Leaf smut"]
+  external_map:
+    bacterial_leaf_blight: "Bacterial leaf blight"
+    brown_spot: "Brown spot"
+    normal: "Health"
+  external_max_per_class: 6
+  cache_primary_in_ram: true
+  num_workers: 0
+
+train:
+  epochs: 1
+  batch_size: 16
+  lr: 3.0e-4
+  weight_decay: 0.01
+  label_smoothing: 0.1
+  patience: 1
+  amp: false
+  pretrained: false
+  img_size_override: 128
+
+models:
+  - {name: inception_v4,      timm: inception_v4.tf_in1k,           img_size: 299}
+  - {name: inception_v3,      timm: inception_v3.tv_in1k,           img_size: 299}
+  - {name: resnet50,          timm: resnet50.a1_in1k,               img_size: 224}
+  - {name: efficientnet_b0,   timm: efficientnet_b0.ra_in1k,        img_size: 224}
+  - {name: mobilenetv3_large, timm: mobilenetv3_large_100.ra_in1k,  img_size: 224}
+  - {name: convnext_tiny,     timm: convnext_tiny.fb_in1k,          img_size: 224}
+  - {name: deit_small,        timm: deit_small_patch16_224.fb_in1k, img_size: 224}
+
+experiments:
+  leakage:
+    model: inception_v4
+    seeds: [0]
+    test_fraction: 0.2
+    val_fraction: 0.1
+  benchmark:
+    n_folds: 2
+    seed: 0
+    val_fraction: 0.25
+    save_checkpoints_for: [inception_v4, mobilenetv3_large, efficientnet_b0]
+  external: true
+  explain:
+    model: inception_v4
+    n_images: 2
+  export:
+    models: [inception_v4, mobilenetv3_large, efficientnet_b0]
+    calib_images: 8
+    latency_runs: 3
+    threads: 1
+  bootstrap_reps: 50

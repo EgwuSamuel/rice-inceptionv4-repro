@@ -1,0 +1,12 @@
+cff-version: 1.2.0
+message: "If you use this code, please cite it as below."
+title: "rice-inceptionv4-repro: leakage-aware rice leaf disease classification with InceptionV4"
+version: 1.0.0
+date-released: 2026-10-14
+license: MIT
+repository-code: "https://github.com/EgwuSamuel/rice-inceptionv4-repro"
+authors:
+  - family-names: Edoh
+    given-names: Francis
+    affiliation: "Department of Computer and Information Technology, Veritas University, Abuja, Nigeria"
+  - alias: EgwuSamuel

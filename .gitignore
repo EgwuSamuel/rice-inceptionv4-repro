@@ -1,0 +1,20 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+.ipynb_checkpoints/
+.pytest_cache/
+
+# data and outputs
+data/
+smoke_data/
+smoke_results/
+results/
+*.pt
+*.onnx
+*.zip
+
+# web app runtime files
+instance/
+app/static/uploads/

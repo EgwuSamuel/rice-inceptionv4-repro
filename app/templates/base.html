@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>{% block title %}Rice Leaf Diagnosis{% endblock %}</title>
+<style>
+  :root { --bg:#f6f7f4; --card:#fff; --ink:#1d2a1f; --muted:#5d6b60; --accent:#2f6b3a; --line:#d9ded7;
+          --danger:#a33a2c; --warn:#8a6100; --ok:#2f6b3a; }
+  * { box-sizing: border-box; }
+  body { margin:0; font:16px/1.5 system-ui,-apple-system,"Segoe UI",sans-serif; background:var(--bg); color:var(--ink); }
+  header { background:var(--accent); color:#fff; padding:12px 16px; display:flex; gap:16px; align-items:center; flex-wrap:wrap; }
+  header a { color:#fff; text-decoration:none; } header strong { margin-right:auto; }
+  main { max-width:760px; margin:24px auto; padding:0 16px; }
+  .card { background:var(--card); border:1px solid var(--line); border-radius:8px; padding:20px; margin-bottom:16px; }
+  label { display:block; font-weight:600; margin:12px 0 4px; }
+  input[type=text],input[type=password],input[type=file] { width:100%; padding:10px; border:1px solid var(--line); border-radius:6px; font:inherit; }
+  button { margin-top:16px; background:var(--accent); color:#fff; border:0; padding:10px 18px; border-radius:6px; font:inherit; cursor:pointer; }
+  .flash { padding:10px 12px; border-radius:6px; margin-bottom:12px; border:1px solid var(--line); }
+  .flash.danger { color:var(--danger); } .flash.warning { color:var(--warn); } .flash.success { color:var(--ok); }
+  .muted { color:var(--muted); font-size:14px; }
+  img.leaf { max-width:100%; max-height:320px; border-radius:6px; display:block; margin:8px 0; }
+  table { width:100%; border-collapse:collapse; font-size:14px; } td,th { text-align:left; padding:6px 4px; border-bottom:1px solid var(--line); }
+  .bar { height:8px; background:var(--accent); border-radius:4px; }
+</style>
+</head>
+<body>
+<header>
+  <strong>Rice Leaf Diagnosis</strong>
+  {% if session.user_id %}
+    <a href="{{ url_for('index') }}">Diagnose</a>
+    <a href="{{ url_for('history') }}">History</a>
+    <a href="{{ url_for('logout') }}">Log out ({{ session.username }})</a>
+  {% endif %}
+</header>
+<main>
+  {% with msgs = get_flashed_messages(with_categories=true) %}
+    {% for cat, msg in msgs %}<div class="flash {{ cat }}">{{ msg }}</div>{% endfor %}
+  {% endwith %}
+  {% block content %}{% endblock %}
+</main>
+</body>
+</html>

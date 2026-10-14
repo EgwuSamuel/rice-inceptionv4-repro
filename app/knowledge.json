@@ -1,0 +1,38 @@
+{
+  "_note": "Advice paraphrased from the cited extension sources (accessed 2026-10-14). It is general guidance; farmers should confirm with their local agricultural extension office.",
+  "Bacterial leaf blight": {
+    "pathogen": "Xanthomonas oryzae pv. oryzae (bacterium)",
+    "management": [
+      "Plant resistant varieties: the most efficient, reliable and cheapest control.",
+      "Apply balanced plant nutrients, especially nitrogen.",
+      "Ensure good drainage of flooded fields and nurseries.",
+      "Keep fields clean: remove weed hosts and plough under stubble, straw, ratoons and volunteer seedlings.",
+      "Allow fallow fields to dry to suppress the bacteria in soil and plant residues."
+    ],
+    "source": "IRRI Rice Knowledge Bank, Bacterial blight fact sheet: http://www.knowledgebank.irri.org/training/fact-sheets/pest-management/diseases/item/bacterial-blight"
+  },
+  "Brown spot": {
+    "pathogen": "Bipolaris oryzae (fungus; Texas Plant Disease Handbook)",
+    "management": [
+      "Improve soil fertility: monitor soil nutrients and apply the fertilisers required.",
+      "On silicon-deficient soils, apply calcium silicate slag before planting.",
+      "Use resistant varieties (ask the local agriculture office for current lists).",
+      "Use fungicide seed treatments (e.g. iprodione, propiconazole, azoxystrobin, trifloxystrobin, carbendazim).",
+      "Treat seed with hot water (53-54 °C for 10-12 min) after an 8 h cold-water pre-soak."
+    ],
+    "source": "IRRI Rice Knowledge Bank, Brown spot fact sheet: http://www.knowledgebank.irri.org/training/fact-sheets/pest-management/diseases/item/brown-spot"
+  },
+  "Leaf smut": {
+    "pathogen": "Entyloma oryzae (fungus)",
+    "management": [
+      "Leaf smut is a minor disease that appears late in the season and causes little or no economic loss.",
+      "No control measures are recommended for leaf smut."
+    ],
+    "source": "Texas Plant Disease Handbook, Rice: https://plantdiseasehandbook.tamu.edu/food-crops/cereal-crops/rice/"
+  },
+  "Healthy": {
+    "pathogen": null,
+    "management": ["No disease detected. Continue routine field monitoring."],
+    "source": null
+  }
+}

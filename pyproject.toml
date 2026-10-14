@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ricedx"
+version = "1.0.0"
+description = "Leakage-aware benchmark of InceptionV4 and baselines for rice leaf disease classification, with a deployable web app"
+readme = "README.md"
+license = { text = "MIT" }
+requires-python = ">=3.10"
+dependencies = [
+  "torch>=2.3",
+  "torchvision>=0.16",
+  "timm>=0.9.12",
+  "numpy>=1.24",
+  "pandas>=2.0",
+  "scikit-learn>=1.3",
+  "scipy>=1.10",
+  "matplotlib>=3.7",
+  "pyyaml>=6.0",
+  "pillow>=9.5",
+  "onnx>=1.15",
+  "onnxruntime>=1.17",
+]
+
+[project.optional-dependencies]
+app = ["flask>=3.0", "werkzeug>=3.0"]
+dev = ["pytest>=7.4", "nbconvert>=7.0", "nbclient>=0.9", "nbformat>=5.9", "ipykernel>=6.25"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

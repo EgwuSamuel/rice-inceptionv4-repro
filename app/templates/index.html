@@ -1,0 +1,34 @@
+{% extends "base.html" %}{% block title %}Diagnose{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>Diagnose a rice leaf</h2>
+  <form method="post" enctype="multipart/form-data">
+    <label for="file">Leaf photo (JPG/PNG, max 8 MB)</label>
+    <input id="file" name="file" type="file" accept="image/*" capture="environment" required>
+    <button type="submit">Predict</button>
+  </form>
+  <p class="muted">Classes: bacterial leaf blight, brown spot, leaf smut, healthy. Other diseases are not recognised.</p>
+</div>
+{% if result %}
+<div class="card">
+  <img class="leaf" src="{{ result.image_url }}" alt="Uploaded leaf">
+  {% if result.abstained %}
+    <h3>Uncertain result</h3>
+    <p>The model's confidence ({{ '%.0f' % (result.confidence * 100) }}%) is below {{ '%.0f' % (result.threshold * 100) }}%.
+       Retake the photo of a single leaf in good light, or consult an extension officer.</p>
+  {% else %}
+    <h3>{{ result.label }} <span class="muted">({{ '%.1f' % (result.confidence * 100) }}% confidence)</span></h3>
+    {% if result.advice %}
+      {% if result.advice.pathogen %}<p class="muted">Cause: {{ result.advice.pathogen }}</p>{% endif %}
+      <h4>Management</h4>
+      <ul>{% for item in result.advice.management %}<li>{{ item }}</li>{% endfor %}</ul>
+      {% if result.advice.source %}<p class="muted">Source: {{ result.advice.source }}</p>{% endif %}
+    {% endif %}
+  {% endif %}
+  <h4>All class probabilities</h4>
+  <table>{% for c, p in result.probabilities.items() %}
+    <tr><td>{{ c }}</td><td style="width:50%"><div class="bar" style="width: {{ '%.1f' % (p * 100) }}%"></div></td><td>{{ '%.1f' % (p * 100) }}%</td></tr>
+  {% endfor %}</table>
+</div>
+{% endif %}
+{% endblock %}

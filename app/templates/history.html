@@ -1,0 +1,14 @@
+{% extends "base.html" %}{% block title %}History{% endblock %}
+{% block content %}
+<div class="card">
+  <h2>Your last predictions</h2>
+  {% if rows %}
+  <table>
+    <tr><th>Time (UTC)</th><th>Result</th><th>Confidence</th></tr>
+    {% for r in rows %}
+    <tr><td>{{ r.created_at }}</td><td>{{ 'Uncertain' if r.abstained else r.label }}</td><td>{{ '%.1f' % (r.confidence * 100) }}%</td></tr>
+    {% endfor %}
+  </table>
+  {% else %}<p class="muted">No predictions yet.</p>{% endif %}
+</div>
+{% endblock %}

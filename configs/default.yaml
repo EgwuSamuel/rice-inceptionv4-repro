@@ -1,0 +1,57 @@
+# Full experiment configuration (GPU, e.g. Kaggle T4).
+# Paths set to "auto" are resolved by ricedx.data.find_dataset_root().
+
+data:
+  primary_root: auto        # folder that contains the 4 class folders of bahribahri/riceleaf
+  external_root: auto       # Paddy Doctor train_images/ folder (or null to skip)
+  classes: ["Bacterial leaf blight", "Brown spot", "Health", "Leaf smut"]
+  display_names: ["Bacterial leaf blight", "Brown spot", "Healthy", "Leaf smut"]
+  external_map:             # Paddy Doctor folder -> primary class
+    bacterial_leaf_blight: "Bacterial leaf blight"
+    brown_spot: "Brown spot"
+    normal: "Health"
+  external_max_per_class: null
+  cache_primary_in_ram: true
+  num_workers: 4
+
+train:
+  epochs: 15
+  batch_size: 64
+  lr: 3.0e-4
+  weight_decay: 0.01
+  label_smoothing: 0.1
+  patience: 4               # early stopping on validation macro-F1
+  amp: true
+  pretrained: true
+  img_size_override: null   # null -> use each model's own size below
+
+models:
+  - {name: inception_v4,      timm: inception_v4.tf_in1k,           img_size: 299}
+  - {name: inception_v3,      timm: inception_v3.tv_in1k,           img_size: 299}
+  - {name: resnet50,          timm: resnet50.a1_in1k,               img_size: 224}
+  - {name: efficientnet_b0,   timm: efficientnet_b0.ra_in1k,        img_size: 224}
+  - {name: mobilenetv3_large, timm: mobilenetv3_large_100.ra_in1k,  img_size: 224}
+  - {name: convnext_tiny,     timm: convnext_tiny.fb_in1k,          img_size: 224}
+  - {name: deit_small,        timm: deit_small_patch16_224.fb_in1k, img_size: 224}
+
+experiments:
+  leakage:                  # E1: image-level random split (thesis protocol) vs source-grouped split
+    model: inception_v4
+    seeds: [0, 1, 2]
+    test_fraction: 0.2
+    val_fraction: 0.1
+  benchmark:                # E2: stratified group 5-fold CV over the 160 source photographs
+    n_folds: 5
+    seed: 0
+    val_fraction: 0.15
+    save_checkpoints_for: [inception_v4, mobilenetv3_large, efficientnet_b0]
+  external: true            # E3: zero-shot test on Paddy Doctor shared classes (every fold model)
+  explain:                  # E4: Grad-CAM
+    model: inception_v4
+    n_images: 8
+  export:                   # E5: ONNX FP32 / INT8 deployment metrics (fold-0 checkpoints)
+    models: [inception_v4, mobilenetv3_large, efficientnet_b0]
+    calib_images: 128
+    latency_runs: 50
+    threads: 4
+  bootstrap_reps: 2000
