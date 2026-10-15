@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite it as below."
-title: "Leakage-Aware Evaluation of InceptionV4 for Rice Leaf Disease Diagnosis and a Web-Based Decision-Support System"
+title: "Reliable Evaluation of Deep Learning Models for Rice Leaf Disease Detection"
 version: 1.0.0
 date-released: 2026-10-14
 license: MIT
@@ -8,5 +8,15 @@ repository-code: "https://github.com/EgwuSamuel/rice-inceptionv4-repro"
 authors:
   - family-names: Edoh
     given-names: Francis
-    affiliation: "Department of Computer and Information Technology, Veritas University, Abuja, Nigeria"
-  - alias: EgwuSamuel
+    affiliation: "Department of Computer Science, Veritas University Abuja, Abuja, Nigeria"
+  - family-names: Egwu
+    given-names: Samuel Onuche-Ojo
+    affiliation: "Department of Software Engineering, Veritas University Abuja, Abuja, Nigeria"
+    email: egwuonucheojosamuel@gmail.com
+    alias: EgwuSamuel
+  - family-names: Longkang
+    given-names: Emmanuel
+    affiliation: "Department of Computer Science, Veritas University Abuja, Abuja, Nigeria"
+  - family-names: Abdulazeez
+    given-names: Faiz
+    affiliation: "Faculty of Computer Science, University of Vienna (Universität Wien), Vienna, Austria"

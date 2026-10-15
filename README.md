@@ -1,4 +1,4 @@
-# Leakage-Aware Evaluation of InceptionV4 for Rice Leaf Disease Diagnosis and a Web-Based Decision-Support System
+# Reliable Evaluation of Deep Learning Models for Rice Leaf Disease Detection
 
 Reproducibility code for the study above. It uses the Kaggle dataset [`bahribahri/riceleaf`](https://www.kaggle.com/datasets/bahribahri/riceleaf): 16,000 images in four classes (bacterial leaf blight, brown spot, leaf smut, healthy). The images were produced by augmenting only **160 original photographs** (40 per class), about 100 times each. The source photograph of every image is encoded in its filename, so this repository can measure exactly how much an image-level split inflates the results.
 
