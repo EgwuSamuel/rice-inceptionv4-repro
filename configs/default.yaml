@@ -35,7 +35,7 @@ models:
   - {name: deit_small,        timm: deit_small_patch16_224.fb_in1k, img_size: 224}
 
 experiments:
-  leakage:                  # E1: image-level random split (thesis protocol) vs source-grouped split
+  leakage:                  # E1: image-level random split vs source-grouped split
     model: inception_v4
     seeds: [0, 1, 2]
     test_fraction: 0.2

@@ -130,7 +130,7 @@ def build_report(cfg, df, ext_df, out, log):
                color=["#c44e52", "#4c72b0"][: len(order)], capsize=4)
         ax.set_ylabel("Test macro-F1")
         ax.set_ylim(0, 1.05)
-        ax.set_xticks(range(len(order)), ["image-level\n(thesis protocol)" if p == "random" else "source-grouped" for p in order])
+        ax.set_xticks(range(len(order)), ["image-level\n(random)" if p == "random" else "source-grouped" for p in order])
         fig.tight_layout()
         fig.savefig(figs / "fig_leakage.png", dpi=300)
         plt.close(fig)

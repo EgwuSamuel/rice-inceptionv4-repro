@@ -1,8 +1,6 @@
-# Leakage-aware rice leaf disease classification with InceptionV4
+# Leakage-Aware Evaluation of InceptionV4 for Rice Leaf Disease Diagnosis and a Web-Based Decision-Support System
 
-Reproducibility code for a leakage-aware re-evaluation of InceptionV4 for rice leaf disease classification, with a deployable web system.
-
-It re-implements and extends the MSc study of F. Edoh (Veritas University, Abuja, 2025), which reported 99.7% accuracy for InceptionV4 on the Kaggle dataset [`bahribahri/riceleaf`](https://www.kaggle.com/datasets/bahribahri/riceleaf). That dataset has 16,000 images in four classes (bacterial leaf blight, brown spot, leaf smut, healthy). The images were produced by augmenting only **160 original photographs** (40 per class), about 100 times each. The source photograph of every image is encoded in its filename, so this repository can measure exactly how much an image-level split inflates the results.
+Reproducibility code for the study above. It uses the Kaggle dataset [`bahribahri/riceleaf`](https://www.kaggle.com/datasets/bahribahri/riceleaf): 16,000 images in four classes (bacterial leaf blight, brown spot, leaf smut, healthy). The images were produced by augmenting only **160 original photographs** (40 per class), about 100 times each. The source photograph of every image is encoded in its filename, so this repository can measure exactly how much an image-level split inflates the results.
 
 ## What the code does
 

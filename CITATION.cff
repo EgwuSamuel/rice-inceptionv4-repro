@@ -1,6 +1,6 @@
 cff-version: 1.2.0
 message: "If you use this code, please cite it as below."
-title: "rice-inceptionv4-repro: leakage-aware rice leaf disease classification with InceptionV4"
+title: "Leakage-Aware Evaluation of InceptionV4 for Rice Leaf Disease Diagnosis and a Web-Based Decision-Support System"
 version: 1.0.0
 date-released: 2026-10-14
 license: MIT

@@ -154,7 +154,7 @@ def build_external_index(root, external_map, classes, max_per_class=None, seed=0
 # Splitting
 # --------------------------------------------------------------------------- #
 def random_split(df, test_fraction, seed):
-    """Image-level stratified split (the thesis protocol; leaks across groups)."""
+    """Image-level stratified split (treats augmented copies as independent; leaks across groups)."""
     tr, te = train_test_split(
         np.arange(len(df)), test_size=test_fraction, stratify=df["label"], random_state=seed
     )
